@@ -1,0 +1,28 @@
+package controllers;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+
+import beans.User;
+
+@SuppressWarnings("deprecation")
+@ManagedBean
+public class FormController {
+	
+	public String onSubmit() {
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		User user = context.getApplication().evaluateExpressionGet(context, "#{user}", User.class);
+		
+		System.out.println("You clciked the submit button");
+		System.out.println("The first name is " + user.getFirstName());
+		System.out.println("The last name is " + user.getLastName());
+		
+		//put the user object into the POST request
+		FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("user", user);
+		
+		//show next page
+		return "Response.xhtml";
+	}
+}

@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\Users\Finst\Desktop\testIDEConfig\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1339031316.index
+2898170954.index
+591678743.index
+3271193799.index
+159072135.index
+3174246516.index

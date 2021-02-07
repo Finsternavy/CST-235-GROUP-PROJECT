@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN"
+    "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html">
+	  
+	  <head>
+	  	<title><ui:insert name="pageTitle">Page Title</ui:insert></title>
+	  </head>
+	  
+<body>
+	
+	<ui:composition template="/layouts/commonLayout.xhtml">
+	
+		
+		<ui:define name="content">
+		
+			<div align="center">
+	
+				<h1>Response Page</h1>
+				<p>Your user name is #{user.userName}.</p>
+				<p>Your password is #{user.password}</p>
+				<h:messages />
+			
+			</div>
+		
+		</ui:define>
+		
+		
+	
+	</ui:composition>
+
+</body>
+
+</html>
