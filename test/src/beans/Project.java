@@ -2,104 +2,134 @@ package beans;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
 @SuppressWarnings("deprecation")
 @ManagedBean
+@ApplicationScoped
 public class Project {
 
-	public Project(String name) {
+	public Project(String name, String description, String dueDate, int tasksActive, int tasksCompleted, int percentComplete) {
 		this.name = name;
-		allTasks = new ArrayList<Task>();
-		hotItems = new ArrayList<Task>();
-		ComingDue = new ArrayList<Task>();
-		ideas = new ArrayList<Task>();
-	}
-	
-	public Project() {
-		allTasks = new ArrayList<Task>();
-		hotItems = new ArrayList<Task>();
-		ComingDue = new ArrayList<Task>();
-		ideas = new ArrayList<Task>();
+		this.description = description;
+		this.dueDate = dueDate;
+		this.tasksActive = tasksActive;
+		this.tasksCompleted = tasksCompleted;
+		this.percentCompete = percentComplete;
 		
 	}
 	
+	public Project() {
+		
+	}
+
+	public List<Task> taskHashMapList = new ArrayList<Task>();
+
 	private String name;
 	private String description;
-	private Date duedate;
+	private String dueDate;
 	private int tasksActive;
 	private int tasksCompleted;
 	private int percentCompete;
 	
-	public List<Task> allTasks;
-	public List<Task> hotItems;
-	public List<Task> ComingDue;
-	public List<Task> ideas;
 	
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public Date getDuedate() {
-		return duedate;
-	}
-	public void setDuedate(Date duedate) {
-		this.duedate = duedate;
-	}
-	public int getTasksActive() {
-		return tasksActive;
-	}
-	public void setTasksActive(int tasksActive) {
-		this.tasksActive = tasksActive;
-	}
-	public int getTasksCompleted() {
-		return tasksCompleted;
-	}
-	public void setTasksCompleted(int tasksCompleted) {
-		this.tasksCompleted = tasksCompleted;
-	}
-	public int getPercentCompete() {
-		return percentCompete;
-	}
-	public void setPercentCompete(int percentCompete) {
-		this.percentCompete = percentCompete;
-	}
-	public List<Task> getAllTasks() {
-		return allTasks;
-	}
-	public void setAllTasks(List<Task> allTasks) {
-		this.allTasks = allTasks;
-	}
-	public List<Task> getHotItems() {
-		return hotItems;
-	}
-	public void setHotItems(List<Task> hotItems) {
-		this.hotItems = hotItems;
-	}
-	public List<Task> getComingDue() {
-		return ComingDue;
-	}
-	public void setComingDue(List<Task> comingDue) {
-		ComingDue = comingDue;
-	}
-	public List<Task> getIdeas() {
-		return ideas;
-	}
-	public void setIdeas(List<Task> ideas) {
-		this.ideas = ideas;
+	int keyValue = 0;
+	
+	public static HashMap<String, Task> tasks = new HashMap<String, Task>();
+	
+	public int keyValue() {
+		return this.keyValue;
 	}
 	
+	public void setKeyValue(int key) {
+		this.keyValue = key;
+	}
 	
+	public boolean validateIsNew(Task task) {
+		
+		String checkTaskName = task.getName();
+		
+		boolean isNew = true;
+		
+		for(String s: tasks.keySet()) {
+			String taskName = tasks.get(s).getName();
+			if(taskName.equals(checkTaskName)) {
+			
+				isNew = false;
+				return isNew;
+				
+			}
+		}
+		
+		return isNew;
+	}
 	
+	public void addTask(Task task) {
+		
+		this.keyValue = this.keyValue + 1;
+		
+		String keyString = String.valueOf(this.keyValue);
+	
+		tasks.put(keyString, task);
+	}
+	
+	public void removeTask(String taskToRemoved) {
+		
+		boolean taskFound = false;
+		
+		for (String s: tasks.keySet()) {
+			String userName = tasks.get(s).getName();
+			if(userName.equals(taskToRemoved)) {
+				taskFound = true;
+				tasks.remove(s);
+			}
+		}
+		
+		if(taskFound) {
+			System.out.println("Task was removed!");
+		}else {
+			
+			System.out.println("Task not found! No task was removed!");
+		}
+		
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		for(String s: tasks.keySet()) {
+			sb.append("Task Name: " + tasks.get(s).getName() + " Task Description: " + tasks.get(s).getDescription() 
+					+ " Due Date: " + tasks.get(s).getDueDate() + " Assigned to: " + tasks.get(s).getMemberAssigned() + " Approved?: " +  
+					tasks.get(s).getApproved().toString() + "\n");
+		}
+		
+		return sb.toString();
+	}
+	
+	public static HashMap<String, Task> getTasks() {
+		return tasks;
+	}
+	
+
+	public static void setTasks(HashMap<String, Task> tasks) {
+		Project.tasks = tasks;
+	}
+	
+	public List<Task> hashMapToList() {
+		taskHashMapList.clear();
+		
+		for(String s: Project.tasks.keySet()) {
+			taskHashMapList.add(tasks.get(s));
+		}
+		
+		return taskHashMapList;
+		
+	}
+		
 }
+
 

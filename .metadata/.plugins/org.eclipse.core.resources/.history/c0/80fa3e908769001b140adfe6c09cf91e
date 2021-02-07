@@ -1,0 +1,22 @@
+package dao;
+
+import beans.Project;
+import beans.Task;
+
+public class ProjectDao {
+	
+	public ProjectDao() {
+		myProject = new Project();
+	}
+
+	public Project myProject;
+	
+	public void addTask(Task task) {
+		
+		myProject.allTasks.add(task);
+		
+		for(Task tasks: myProject.allTasks) {
+			System.out.println(tasks.toString());
+		}
+	}
+}

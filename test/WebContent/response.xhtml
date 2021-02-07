@@ -5,17 +5,17 @@
 	  xmlns:f="http://java.sun.com/jsf/core"
 	  xmlns:h="http://java.sun.com/jsf/html">
 	  
-	  <head>
-	  <title><ui:insert name="pageTitle">Page Title</ui:insert></title>
-	  <style>
-  		.order-table {
-  		
-  			border: 2px black solid;
-  		
-  		}
-	  	
-	  </style>
-	  </head>
+		  <head>
+		  <title><ui:insert name="pageTitle">Page Title</ui:insert></title>
+		  <style>
+		  	.order-table {
+	  		
+	  			border: 1px black solid;
+	  		
+	  		}
+		  	
+		  </style>
+		  </head>
 	  
 <body>
 	
@@ -26,15 +26,14 @@
 		
 			<div align="center">
 	
-				<h1>Response Page</h1>
+				<h1>Project Home Page</h1>
 				<p> Welcome #{user.firstName} #{user.lastName}.</p>
-				<p>You are now signed in!</p>
 				<h:messages />
 			
 			</div>
 			
 			<div align="center">
-				<h:dataTable value="#{project.allTasks}" var="o" styleClass="order-table" headerClass="order-table-header" rowClasses="order-table-odd, order-table-even">
+				<h:dataTable value="#{project.hashMapToList()}" var="o" styleClass="order-table" headerClass="order-table-header" rowClasses="order-table-odd, order-table-even">
 				
 					<h:column>
 						<f:facet name="header">|  Name  </f:facet>
@@ -70,7 +69,7 @@
 						<h:inputText value="#{task.dueDate}" />
 						<h:inputText value="#{task.memberAssigned}" />
 						<h:inputText value="#{task.approved}" />
-						<h:commandButton action="#{projectController.createTask()}" value="Submit" />
+						<h:commandButton action="#{projectController.createTask()}" value="Create New Task" />
 				
 					</div>
 					

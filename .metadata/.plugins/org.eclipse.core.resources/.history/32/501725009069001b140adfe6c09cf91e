@@ -1,0 +1,57 @@
+package controllers;
+
+import java.util.ArrayList;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+
+import beans.Project;
+import beans.Task;
+import beans.User;
+import dao.ProjectDao;
+
+@SuppressWarnings("deprecation")
+@ManagedBean
+public class ProjectController {
+	
+	
+	//ProjectDao projectDao = new ProjectDao();
+	
+	public Project myProject = new Project();
+	
+	public ArrayList<Task> tasks = new ArrayList<Task>();
+
+	public String createTask() {
+		
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		Task task = context.getApplication().evaluateExpressionGet(context, "#{task}", Task.class);
+		//User user = context.getApplication().evaluateExpressionGet(context, "#{user}", User.class);
+		
+		
+		
+		if(task!=null) {
+			
+			myProject.allTasks.add(task);
+			
+			System.out.println(myProject.allTasks.toString());
+			
+			FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("task", task);
+			return "response.xhtml";
+			
+		}else {
+			System.out.println("Task was empty");
+		}
+				
+		//FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("user", user);
+		FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("task", task);
+		return "response.xhtml";
+	}
+	
+	public ArrayList<Task> getAllTasks(){
+		
+		
+		return this.myProject.allTasks;
+		
+	}
+}

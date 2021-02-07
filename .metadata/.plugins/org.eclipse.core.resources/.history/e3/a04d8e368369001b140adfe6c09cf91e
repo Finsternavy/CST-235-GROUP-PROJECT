@@ -1,0 +1,20 @@
+package dao;
+
+import beans.Project;
+import beans.Task;
+
+public class ProjectDao {
+	
+	public ProjectDao() {
+		myProject = new Project();
+	}
+
+	Project myProject;
+	
+	public void addTask(Task task) {
+		
+		myProject.allTasks.add(task);
+		
+		System.out.println("Task successfully added");
+	}
+}

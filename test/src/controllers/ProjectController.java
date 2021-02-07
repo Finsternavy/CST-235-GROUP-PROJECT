@@ -1,28 +1,40 @@
 package controllers;
 
+import java.util.ArrayList;
+
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 import beans.Project;
 import beans.Task;
 import beans.User;
+import dao.ProjectDao;
 
 @SuppressWarnings("deprecation")
 @ManagedBean
+@ApplicationScoped
 public class ProjectController {
 	
 	
-	Project project = new Project();
+	public Project myProject = new Project();
+	
 
 	public String createTask() {
 		
+		
 		FacesContext context = FacesContext.getCurrentInstance();
 		Task task = context.getApplication().evaluateExpressionGet(context, "#{task}", Task.class);
-		User user = context.getApplication().evaluateExpressionGet(context, "#{user}", User.class);
+		//User user = context.getApplication().evaluateExpressionGet(context, "#{user}", User.class);
 		
-		project.allTasks.add(task);
+		myProject.addTask(task);
+		myProject.hashMapToList();
 		
-		FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("user", user);
+		FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("task", task);
+				
+		//FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("user", user);
 		return "response.xhtml";
+		
 	}
+	
 }

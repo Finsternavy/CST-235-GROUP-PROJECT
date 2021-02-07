@@ -6,5 +6,11 @@
     <fullyQualifiedTypeName name="beans.User"/>
     <fullyQualifiedTypeName name="beans.Database"/>
     <fullyQualifiedTypeName name="javax.annotation.ManagedBean"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="javax.faces.bean.ManagedBean"/>
+    <fullyQualifiedTypeName name="beans.Project"/>
+    <fullyQualifiedTypeName name="dao.ProjectDao"/>
+    <fullyQualifiedTypeName name="beans.Task"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="javax.faces.bean.ApplicationScoped"/>
 </qualifiedTypeNameHistroy>

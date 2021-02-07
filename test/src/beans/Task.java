@@ -61,6 +61,15 @@ public class Task {
 		this.approved = approved;
 	}
 	
+	public String toString() {
+		
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append(this.name + " " + this.description + " " + this.dueDate + " " + this.memberAssigned + " " + this.approved);
+		
+		return sb.toString();
+	}
+	
 	
 	
 }

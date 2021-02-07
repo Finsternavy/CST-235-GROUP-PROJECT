@@ -1,0 +1,34 @@
+package controllers;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+
+import beans.Project;
+import beans.Task;
+import beans.User;
+import dao.ProjectDao;
+
+@SuppressWarnings("deprecation")
+@ManagedBean
+public class ProjectController {
+	
+	
+	ProjectDao projectDao = new ProjectDao();
+
+	public String createTask() {
+		
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		Task task = context.getApplication().evaluateExpressionGet(context, "#{task}", Task.class);
+		//User user = context.getApplication().evaluateExpressionGet(context, "#{user}", User.class);
+		
+		projectDao.addTask(task);
+		
+		System.out.print(projectDao.myProject.toString());
+		
+		
+		//FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("user", user);
+		FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("task", task);
+		return "response.xhtml";
+	}
+}
