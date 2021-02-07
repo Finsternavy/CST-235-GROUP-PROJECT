@@ -45,6 +45,6 @@ public class LoginFormController {
 		//FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("user", user);
 		
 		//show next page
-		return "response.xhtml";
+		return "login-form.xhtml";
 	}
 }

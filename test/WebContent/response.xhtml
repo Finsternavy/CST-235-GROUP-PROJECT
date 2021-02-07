@@ -6,7 +6,15 @@
 	  xmlns:h="http://java.sun.com/jsf/html">
 	  
 	  <head>
-	  	<title><ui:insert name="pageTitle">Page Title</ui:insert></title>
+	  <title><ui:insert name="pageTitle">Page Title</ui:insert></title>
+	  <style>
+  		.order-table {
+  		
+  			border: 2px black solid;
+  		
+  		}
+	  	
+	  </style>
 	  </head>
 	  
 <body>
@@ -19,9 +27,54 @@
 			<div align="center">
 	
 				<h1>Response Page</h1>
-				<p> Weclome #{user.firstName} #{user.lastName}.</p>
+				<p> Welcome #{user.firstName} #{user.lastName}.</p>
 				<p>You are now signed in!</p>
 				<h:messages />
+			
+			</div>
+			
+			<div align="center">
+				<h:dataTable value="#{project.allTasks}" var="o" styleClass="order-table" headerClass="order-table-header" rowClasses="order-table-odd, order-table-even">
+				
+					<h:column>
+						<f:facet name="header">|  Name  </f:facet>
+						#{o.name}
+					</h:column>
+					<h:column>
+						<f:facet name="header">|  Description  </f:facet>
+						#{o.description}
+					</h:column>
+					<h:column>
+						<f:facet name="header">|  Due Date  </f:facet>
+						#{o.dueDate}
+					</h:column>
+					<h:column>
+						<f:facet name="header">|  Assigned to  </f:facet>
+						#{o.memberAssigned}
+					</h:column>
+					<h:column>
+						<f:facet name="header">|  Approved?  |</f:facet>
+						#{o.approved}
+					</h:column>
+	
+				</h:dataTable>
+			</div>
+			
+			<div align="center">
+			
+				<h:form>
+				
+					<div>
+						<h:inputText value="#{task.name}" />
+						<h:inputText value="#{task.description}" />
+						<h:inputText value="#{task.dueDate}" />
+						<h:inputText value="#{task.memberAssigned}" />
+						<h:inputText value="#{task.approved}" />
+						<h:commandButton action="#{projectController.createTask()}" value="Submit" />
+				
+					</div>
+					
+				</h:form>
 			
 			</div>
 		

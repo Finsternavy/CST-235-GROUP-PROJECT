@@ -12,7 +12,7 @@ import beans.User;
 public class RegistrationFormController {
 	
 	private int id = 0;
-	Database myDB = new Database();
+	public Database myDB = new Database();
 	
 	public String onSubmit() {
 		

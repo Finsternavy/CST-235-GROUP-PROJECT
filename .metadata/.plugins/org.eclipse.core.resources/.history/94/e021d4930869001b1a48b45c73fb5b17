@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN"
+    "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html">
+	  
+	  <head>
+	  <title><ui:insert name="pageTitle">Page Title</ui:insert></title>
+	  <style>
+  		.order-table {
+  		
+  			border: 2px black solid;
+  		
+  		}
+	  	
+	  </style>
+	  </head>
+	  
+<body>
+	
+	<ui:composition template="/layouts/commonLayout.xhtml">
+	
+		
+		<ui:define name="content">
+		
+			<div align="center">
+	
+				<h1>Response Page</h1>
+				<p> Welcome #{user.firstName} #{user.lastName}.</p>
+				<p>You are now signed in!</p>
+				<h:messages />
+			
+			</div>
+			
+			<div align="center">
+				<h:dataTable value="#{project.allTasks}" var="o" styleClass="order-table" headerClass="order-table-header" rowClasses="order-table-odd, order-table-even">
+				
+					<h:column>
+						<f:facet name="header">|  Name  </f:facet>
+						#{o.name}
+					</h:column>
+					<h:column>
+						<f:facet name="header">|  Description  </f:facet>
+						#{o.description}
+					</h:column>
+					<h:column>
+						<f:facet name="header">|  Due Date  </f:facet>
+						#{o.dueDate}
+					</h:column>
+					<h:column>
+						<f:facet name="header">|  Assigned to  </f:facet>
+						#{o.memberAssigned}
+					</h:column>
+					<h:column>
+						<f:facet name="header">|  Approved?  |</f:facet>
+						#{o.approved}
+					</h:column>
+	
+				</h:dataTable>
+			</div>
+			
+			<div>
+			
+				<h:form>
+				
+					<div>
+						New Task Name <h:inputText value="#{task.name}" />
+						Description <h:inputText value="#{task.description}" />
+						Due Date <h:inputText value="#{task.dueDate}" />
+						Assigned to <h:inputText value="#{task.memberAssigned}" />
+						Approve? <h:inputText value="#{task.approved}" />
+						<h:><h:commandButton action="#{projectController.createTask()}" value="Submit" />
+				
+					</div>
+					
+				</h:form>
+			
+			</div>
+		
+		</ui:define>
+		
+		
+	
+	</ui:composition>
+
+</body>
+
+</html>

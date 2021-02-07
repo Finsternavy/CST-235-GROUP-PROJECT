@@ -1,0 +1,28 @@
+package controllers;
+
+import javax.faces.bean.ManagedBean;
+
+import beans.Project;
+import beans.Task;
+
+@SuppressWarnings("deprecation")
+@ManagedBean
+public class ProjectController {
+	
+	public ProjectController() {
+		
+		project = new Project();
+	}
+	
+	Project project;
+
+	public String createTask() {
+		
+		Task task = new Task();
+		
+		project.allTasks.add(task);
+		
+		
+		return "";
+	}
+}

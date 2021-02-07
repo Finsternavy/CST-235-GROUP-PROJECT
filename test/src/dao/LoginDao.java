@@ -31,6 +31,11 @@ public class LoginDao {
 				if(checkUserPassword.equals(userPassword)) {
 					
 					message = "User name and password match found!";
+					user.setFirstName(Database.users.get(s).getFirstName());
+					user.setLastName(Database.users.get(s).getLastName());
+					user.setEmail(Database.users.get(s).getEmail());
+					user.setPhone(Database.users.get(s).getPhone());
+
 					System.out.println(message);
 					
 					return true;
