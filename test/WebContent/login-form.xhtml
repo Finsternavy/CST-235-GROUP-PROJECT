@@ -5,28 +5,27 @@
 	  xmlns:f="http://java.sun.com/jsf/core"
 	  xmlns:h="http://java.sun.com/jsf/html">
 	  
-	  <head>
+	  <h:head>
 	  	<title><ui:insert name="pageTitle">Page Title</ui:insert></title>
-	  </head>
 	  
-<body>
+	  </h:head>
+	  
+<h:body >
 	<ui:composition template="/layouts/commonLayout.xhtml">
 	
 		
 		<ui:define name="content" align="center">
 		
-			<div align="center">
-				<h:form>
-					<div>
-						User Name:<h:inputText value="#{user.userName}" />
-					</div>
-					<div>
-						Password: <h:inputSecret value="#{user.password}" />
-					</div>
+			<div class="container">
+				<h:form >
 					
-					<div>
-						<h:commandButton action="#{loginFormController.onSubmit()}" value="Submit" />
-					</div>
+					<div class="col-25">User Name:</div>
+						<div class="col-75"><h:inputText value="#{user.userName}" /></div>
+					
+					<div class="col-25">Password:</div>
+						<div class="col-75"> <h:inputSecret value="#{user.password}" /></div>
+					
+					<div><h:commandButton action="#{loginFormController.onSubmit()}" value="Submit" type="submit"/></div>
 					
 				</h:form>
 				<h:messages />
@@ -37,6 +36,6 @@
 	
 	</ui:composition>
 
-</body>
+</h:body>
 
 </html>

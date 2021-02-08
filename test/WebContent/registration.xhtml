@@ -13,28 +13,27 @@
 	<ui:composition template="/layouts/commonLayout.xhtml">
 	
 		
-		<ui:define name="content" align="center">
+		<ui:define name="content">
 		
-			<div align="center">
+			<div class="container">
 				<h:form>
-					<div>
-						First Name:<h:inputText value="#{user.firstName}" />
-					</div>
-					<div>
-						Last Name: <h:inputText value="#{user.lastName}" />
-					</div>
-					<div>
-						User Name:<h:inputText value="#{user.userName}" />
-					</div>
-					<div>
-						Password: <h:inputSecret value="#{user.password}" />
-					</div>
-					<div>
-						Email:<h:inputText value="#{user.email}" />
-					</div>
-					<div>
-						Phone: <h:inputText value="#{user.phone}" />
-					</div>
+					<div class="col-25">First Name:</div>
+						<div class="col-75"><h:inputText value="#{user.firstName}" /></div>
+						
+					<div class="col-25">Last Name:</div>
+						<div class="col-75"> <h:inputText value="#{user.lastName}" /></div>
+						
+					<div class="col-25">User Name:</div>
+						<div class="col-75"><h:inputText value="#{user.userName}" /></div>
+						
+					<div class="col-25">Password:</div>
+						<div class="col-75"><h:inputSecret value="#{user.password}" /></div>
+					
+					<div class="col-25">Email:</div>
+						<div class="col-75"><h:inputText value="#{user.email}" /></div>
+						
+					<div class="col-25">Phone:</div>
+						<div class="col-75"> <h:inputText value="#{user.phone}" /></div>
 					
 					<div>
 						<h:commandButton action="#{registrationFormController.onSubmit()}" value="Submit" />
