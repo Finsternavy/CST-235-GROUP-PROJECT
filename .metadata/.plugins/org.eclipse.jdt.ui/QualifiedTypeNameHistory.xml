@@ -3,8 +3,6 @@
     <fullyQualifiedTypeName name="javax.faces.context.FacesContext"/>
     <fullyQualifiedTypeName name="java.util.HashMap"/>
     <fullyQualifiedTypeName name="dao.LoginDao"/>
-    <fullyQualifiedTypeName name="beans.User"/>
-    <fullyQualifiedTypeName name="beans.Database"/>
     <fullyQualifiedTypeName name="javax.annotation.ManagedBean"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="javax.faces.bean.ManagedBean"/>
@@ -12,5 +10,12 @@
     <fullyQualifiedTypeName name="dao.ProjectDao"/>
     <fullyQualifiedTypeName name="beans.Task"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="business.LoginBusinessService"/>
+    <fullyQualifiedTypeName name="beans.User"/>
     <fullyQualifiedTypeName name="javax.faces.bean.ApplicationScoped"/>
+    <fullyQualifiedTypeName name="javax.ejb.Local"/>
+    <fullyQualifiedTypeName name="javax.ejb.Stateless"/>
+    <fullyQualifiedTypeName name="javax.enterprise.inject.Alternative"/>
+    <fullyQualifiedTypeName name="beans.Database"/>
+    <fullyQualifiedTypeName name="business.RegistrationBusinessService"/>
 </qualifiedTypeNameHistroy>

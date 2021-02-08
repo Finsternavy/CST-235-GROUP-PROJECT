@@ -1,15 +1,12 @@
 package controllers;
 
-import java.util.ArrayList;
-
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 import beans.Project;
 import beans.Task;
-import beans.User;
-import dao.ProjectDao;
+
 
 @SuppressWarnings("deprecation")
 @ManagedBean

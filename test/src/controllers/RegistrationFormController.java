@@ -4,23 +4,25 @@ package controllers;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
-import beans.Database;
 import beans.User;
+import business.RegistrationBusinessService;
 
 @SuppressWarnings("deprecation")
 @ManagedBean
 public class RegistrationFormController {
 	
-	//private int id = 0;
-	public Database myDB = new Database();
+	
+	//public Database myDB = new Database();
+	
+	public RegistrationBusinessService registrationBusinessService = new RegistrationBusinessService();
 	
 	public String onSubmit() {
 		
 		FacesContext context = FacesContext.getCurrentInstance();
 		User user = context.getApplication().evaluateExpressionGet(context, "#{user}", User.class);
 		
-		//id = id + 1;
-		myDB.registerMember(user);
+		
+		registrationBusinessService.db.registerMember(user);
 		
 		FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("user", user);
 		

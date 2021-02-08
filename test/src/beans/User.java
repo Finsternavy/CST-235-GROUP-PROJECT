@@ -1,9 +1,11 @@
 package beans;
 
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
 @SuppressWarnings("deprecation")
 @ManagedBean
+@ApplicationScoped
 public class User {
 	private String firstName;
 	private String lastName;

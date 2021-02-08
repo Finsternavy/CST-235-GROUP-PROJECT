@@ -1,0 +1,11 @@
+package business;
+
+import javax.ejb.Local;
+
+import beans.User;
+
+@Local
+public interface RegistrationBusinessInterface {
+
+	boolean validateNewUser(User user);
+}

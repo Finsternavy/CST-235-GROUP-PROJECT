@@ -4,14 +4,14 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 import beans.User;
-import dao.LoginDao;
+import business.LoginBusinessService;
+
 
 @SuppressWarnings("deprecation")
 @ManagedBean
 public class LoginFormController {
 	
-	public LoginDao loginDao = new LoginDao();
-	
+	public LoginBusinessService loginBusinessService = new LoginBusinessService();
 	
 	public String onSubmit() {
 		
@@ -27,7 +27,7 @@ public class LoginFormController {
 		System.out.println("You entered the password: " + user.getPassword());
 		
 		try {
-			if(loginDao.validate(user)) {
+			if(loginBusinessService.validateUser(user)) {
 				FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("user", user);
 				return "response.xhtml";
 				
