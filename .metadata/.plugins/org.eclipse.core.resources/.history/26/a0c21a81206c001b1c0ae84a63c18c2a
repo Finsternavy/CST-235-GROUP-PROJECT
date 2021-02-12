@@ -1,0 +1,10 @@
+package beans;
+
+public enum TASKLISTCHOICE {
+	
+	ALLTASKS,
+	COMINGDUE,
+	PASTDUE,
+	UNASSIGNED;
+
+}

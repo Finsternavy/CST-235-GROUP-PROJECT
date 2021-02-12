@@ -4,6 +4,7 @@ import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
+import beans.CustomDate;
 import beans.Project;
 import beans.Task;
 
@@ -22,16 +23,50 @@ public class ProjectController {
 		
 		FacesContext context = FacesContext.getCurrentInstance();
 		Task task = context.getApplication().evaluateExpressionGet(context, "#{task}", Task.class);
-		//User user = context.getApplication().evaluateExpressionGet(context, "#{user}", User.class);
-		
+		CustomDate date = context.getApplication().evaluateExpressionGet(context, "#{customDate}", CustomDate.class);
+		date.dateStringToValues();
+		System.out.println(date.getDateString());
+		task.setDueDate(date);
+
 		myProject.addTask(task);
 		myProject.hashMapToList();
 		
-		FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("task", task);
+		System.out.println(myProject.toString());
+		
+		//FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("task", task);
 				
 		//FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("user", user);
 		return "response.xhtml";
 		
+	}
+	
+	public String deleteTask() {
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		Task task = context.getApplication().evaluateExpressionGet(context, "#{task}", Task.class);
+		
+		myProject.removeTask(task.getToBeDeleted());
+		myProject.hashMapToList();
+		
+		task = null;
+		
+		return "response.xhtml";
+	}
+	
+	public String updateTable() {
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		Project project = context.getApplication().evaluateExpressionGet(context, "#{project}", Project.class);
+		
+		myProject.setChoice(project.getChoice());
+		
+		System.out.println("Choice is currently set to: " + project.getChoice());
+		System.out.println("Choice is currently set to: " + myProject.getChoice());
+		
+		FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("project", project);
+		
+		
+		return "response.xhtml";
 	}
 	
 }

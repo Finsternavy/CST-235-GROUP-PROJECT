@@ -1,0 +1,208 @@
+package beans;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Date;
+
+import javax.faces.bean.ManagedBean;
+
+@SuppressWarnings("deprecation")
+@ManagedBean
+public class CustomDate {
+	
+	public CustomDate() {
+
+		
+	}
+	
+	public CustomDate(int year, int month, int day) {
+		this.year = year;
+		this.month = month;
+		this.day = day;
+		
+	}
+	
+	public CustomDate(int today) {
+		
+		LocalDateTime now = LocalDateTime.now();
+		this.year = now.getYear();
+		this.month = now.getMonthValue();
+		this.day = now.getDayOfMonth();
+	}
+	
+	public CustomDate(String date) {
+		
+		this.dateString = date;
+		this.dateStringToValues();
+		
+		
+	}
+	
+	private String dateString = "";
+	private int year;
+	private int month;
+	private int day;
+	
+	//String [] dateSplit = dateString.split("");
+	
+	LocalDateTime now;
+	
+	public void dateStringToValues() {
+		
+		String [] dateSplit = dateString.split("");
+		
+		StringBuilder year = new StringBuilder();
+		StringBuilder month = new StringBuilder();
+		StringBuilder day = new StringBuilder();
+		
+		for(int i = 0; i < 4; i++) {
+			
+			year.append(dateSplit[i]);
+	
+		}
+		
+		for(int i = 5; i < 7; i++) {
+			
+			month.append(dateSplit[i]);
+			
+		}
+		
+		for(int i = 8; i < dateSplit.length; i++) {
+			
+			day.append(dateSplit[i]);
+			
+		}
+		
+		this.year = Integer.parseInt(year.toString());
+		this.month = Integer.parseInt(month.toString());
+		this.day = Integer.parseInt(day.toString());
+		
+		
+	}
+
+	public int getYear() {
+		return this.year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+	public int getMonth() {
+		return this.month;
+	}
+
+	public void setMonth(int month) {
+		this.month = month;
+	}
+
+	public int getDay() {
+		return this.day;
+	}
+
+	public void setDay(int day) {
+		this.day = day;
+	}
+
+	public LocalDateTime getNow() {
+		return now;
+	}
+
+	public void setNow(LocalDateTime now) {
+		this.now = now;
+	}
+	
+	
+	
+	public String getDateString() {
+		return dateString;
+	}
+
+	public void setDateString(String dateString) {
+		this.dateString = dateString;
+	}
+	
+	public int monthsToDays(int month) {
+		
+		int monthValue = 0;
+		
+		switch(month) {
+		
+		case 1: monthValue = 0;
+				break;
+				
+		case 2: monthValue = 31;
+				break;
+				
+		case 3: monthValue = 59;
+				break;
+				
+		case 4: monthValue = 90;
+				break;
+				
+		case 5: monthValue = 120;
+				break;
+				
+		case 6: monthValue = 151;
+				break;
+				
+		case 7: monthValue = 181;
+				break;
+				
+		case 8:	monthValue = 212;
+				break;
+				
+		case 9: monthValue = 243;
+				break;
+				
+		case 10: monthValue = 273;
+				break;
+				
+		case 11: monthValue = 304;
+				 break;
+				 
+		case 12: monthValue = 334;
+				 break;
+				 
+		default: monthValue = 0;
+		
+		
+		}
+		
+		return monthValue;
+	}
+	
+	public int calculateTotalDaysFromToday() {
+		
+		CustomDate today = new CustomDate(2);
+		
+		int monthCount = this.monthsToDays(this.getMonth());
+		int todayMonthCount = today.monthsToDays(today.getMonth());
+		
+		int yearValue = this.getYear() * 365;
+		int todayYearValue = today.getYear() * 365;
+		
+		int dayCount = this.getDay();
+		int todayDayCount = today.getDay();
+		
+		
+		int todaysCount = todayMonthCount + todayYearValue + todayDayCount;
+		int thisCount = monthCount + yearValue + dayCount;
+		
+		int count = todaysCount - thisCount;
+		
+		System.out.println(today.getYear() + "    -     " + todaysCount + "   -   " + thisCount  + "    -    " + count);
+		
+		return count;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(this.getYear() + "-");
+		sb.append(this.getMonth() + "-");
+		sb.append(this.getDay());
+		return sb.toString();
+	}
+
+}

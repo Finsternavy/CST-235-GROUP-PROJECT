@@ -1,10 +1,15 @@
 package beans;
 
 
+import java.util.Calendar;
+import java.util.Date;
+
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
 @SuppressWarnings("deprecation")
 @ManagedBean
+
 public class Task {
 
 	public Task() {
@@ -13,22 +18,25 @@ public class Task {
 	
 	
 	
-	public Task(String name, String description, String dueDate, String memberAssigned, String approved) {
+	public Task(String name, String description, CustomDate dueDate, String memberAssigned, boolean approved) {
 		super();
 		this.name = name;
 		this.description = description;
 		this.dueDate = dueDate;
 		this.memberAssigned = memberAssigned;
 		this.approved = approved;
+		
 	}
 
 
 
 	private String name;
 	private String description;
-	private String dueDate;
+	private CustomDate dueDate;
 	private String memberAssigned;
-	private String approved;
+	private boolean approved = false;
+	private String toBeDeleted = "";
+	
 	
 	public String getName() {
 		return name;
@@ -42,10 +50,10 @@ public class Task {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getDueDate() {
+	public CustomDate getDueDate() {
 		return dueDate;
 	}
-	public void setDueDate(String dueDate) {
+	public void setDueDate(CustomDate dueDate) {
 		this.dueDate = dueDate;
 	}
 	public String getMemberAssigned() {
@@ -54,13 +62,28 @@ public class Task {
 	public void setMemberAssigned(String memberAssigned) {
 		this.memberAssigned = memberAssigned;
 	}
-	public String getApproved() {
+	public boolean getApproved() {
 		return approved;
 	}
-	public void setApproved(String approved) {
+	public void setApproved(boolean approved) {
 		this.approved = approved;
 	}
 	
+	
+	
+
+	public String getToBeDeleted() {
+		return toBeDeleted;
+	}
+
+
+
+	public void setToBeDeleted(String toBeDeleted) {
+		this.toBeDeleted = toBeDeleted;
+	}
+
+
+
 	public String toString() {
 		
 		StringBuilder sb = new StringBuilder();

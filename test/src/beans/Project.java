@@ -1,8 +1,15 @@
 package beans;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
@@ -20,6 +27,7 @@ public class Project {
 		this.tasksCompleted = tasksCompleted;
 		this.percentCompete = percentComplete;
 		
+		
 	}
 	
 	public Project() {
@@ -34,6 +42,8 @@ public class Project {
 	private int tasksActive;
 	private int tasksCompleted;
 	private int percentCompete;
+	private String choice = "";
+	private int choiceInt = 0;
 	
 	
 	int keyValue = 0;
@@ -48,6 +58,26 @@ public class Project {
 		this.keyValue = key;
 	}
 	
+	
+
+	public String getChoice() {
+		return this.choice;
+	}
+
+	public void setChoice(String choice) {
+		this.choice = choice;
+	}
+
+	
+	
+	public int getChoiceInt() {
+		return choiceInt;
+	}
+
+	public void setChoiceInt(int choiceInt) {
+		this.choiceInt = choiceInt;
+	}
+
 	public boolean validateIsNew(Task task) {
 		
 		String checkTaskName = task.getName();
@@ -81,10 +111,12 @@ public class Project {
 		boolean taskFound = false;
 		
 		for (String s: tasks.keySet()) {
-			String userName = tasks.get(s).getName();
-			if(userName.equals(taskToRemoved)) {
+			String taskName = tasks.get(s).getName();
+			if(taskName.equals(taskToRemoved)) {
 				taskFound = true;
 				tasks.remove(s);
+				System.out.println("Task was removed!");
+				break;
 			}
 		}
 		
@@ -103,7 +135,7 @@ public class Project {
 		for(String s: tasks.keySet()) {
 			sb.append("Task Name: " + tasks.get(s).getName() + " Task Description: " + tasks.get(s).getDescription() 
 					+ " Due Date: " + tasks.get(s).getDueDate() + " Assigned to: " + tasks.get(s).getMemberAssigned() + " Approved?: " +  
-					tasks.get(s).getApproved().toString() + "\n");
+					tasks.get(s).getApproved() + "\n");
 		}
 		
 		return sb.toString();
@@ -118,16 +150,120 @@ public class Project {
 		Project.tasks = tasks;
 	}
 	
-	public List<Task> hashMapToList() {
-		taskHashMapList.clear();
+	
+	public void setChoiceIntManual(String choice) {
 		
-		for(String s: Project.tasks.keySet()) {
-			taskHashMapList.add(tasks.get(s));
+		if(this.choice == null) {
+			this.setChoice("All Tasks");
+		}
+		if(this.choice.equals("All Tasks")) {
+			this.choiceInt = 0;
+		}else if(this.choice.equals("Past Due")) {
+			this.choiceInt = 1;
+		}else if(this.choice.equals("Coming Due")) {
+			this.choiceInt = 2;
+		}else if(this.choice.equals("Unassigned")) {
+			this.choiceInt = 3;
+		}else if(this.choice.equals("Assigned")){
+			this.choiceInt = 4;
+		}else if(this.choice.equals("Approved")){
+			this.choiceInt = 5;
+		}else if(choice.equals("Not Approved")){
+			this.choiceInt = 6;
+		}else {
+			this.choiceInt = 0;
 		}
 		
+	}
+	
+	public List<Task> hashMapToList() {
+		
+		this.setChoiceIntManual(choice);
+		
+		
+		switch(this.getChoiceInt()) {
+		
+		//ALLTASKS
+		case 0: 		taskHashMapList.clear();
+						for(String s: Project.tasks.keySet()) {
+						taskHashMapList.add(tasks.get(s));
+						}
+	
+						return taskHashMapList;
+		//PASTDUE				
+		case 1:			taskHashMapList.clear();
+	
+						for(String s: Project.tasks.keySet()) {
+
+							if((tasks.get(s).getDueDate().calculateTotalDaysFromToday() > 0)) {
+								taskHashMapList.add(tasks.get(s));
+							}
+						}
+						
+	
+						return taskHashMapList;
+		//COMINGDUE				
+		case 2:			taskHashMapList.clear();
+		
+						for(String s: Project.tasks.keySet()) {
+
+							if((tasks.get(s).getDueDate().calculateTotalDaysFromToday() < 0)) {
+								taskHashMapList.add(tasks.get(s));
+							}
+						}
+		
+
 		return taskHashMapList;
+		//UNASSIGNED				
+		case 3:			taskHashMapList.clear();
+						for(String s: Project.tasks.keySet()) {
+							if(tasks.get(s).getMemberAssigned().equals("")){
+								taskHashMapList.add(tasks.get(s));
+							}
+						}
+							
+						return taskHashMapList;
+		//ASSIGNED			
+		case 4:			taskHashMapList.clear();
+						for(String s: Project.tasks.keySet()) {
+							if(!tasks.get(s).getMemberAssigned().equals("")){
+								taskHashMapList.add(tasks.get(s));
+							}
+						}
+			
+						return taskHashMapList;
+		//APPROVED	
+		case 5:			taskHashMapList.clear();
+						for(String s: Project.tasks.keySet()) {
+							if(tasks.get(s).getApproved())
+							taskHashMapList.add(tasks.get(s));
+						}
+
+						return taskHashMapList;
+		//NOTAPPROVED	
+		case 6:			taskHashMapList.clear();
+						for(String s: Project.tasks.keySet()) {
+							if(!tasks.get(s).getApproved())
+								taskHashMapList.add(tasks.get(s));
+						}
+
+						return taskHashMapList;
+						
+		default:		taskHashMapList.clear();
+						for(String s: Project.tasks.keySet()) {
+						taskHashMapList.add(tasks.get(s));
+						}
+
+						return taskHashMapList;
+						
+		
+		
+		
+		}
 		
 	}
+	
+	 
 		
 }
 

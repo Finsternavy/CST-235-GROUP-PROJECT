@@ -1,0 +1,100 @@
+package beans;
+
+
+import java.awt.Button;
+
+import javax.faces.bean.ManagedBean;
+
+@SuppressWarnings("deprecation")
+@ManagedBean
+public class Task {
+
+	public Task() {
+		
+	}
+	
+	
+	
+	public Task(String name, String description, String dueDate, String memberAssigned, String approved) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.dueDate = dueDate;
+		this.memberAssigned = memberAssigned;
+		this.approved = approved;
+		
+	}
+
+
+
+	private String name;
+	private String description;
+	private String dueDate;
+	private String memberAssigned;
+	private String approved;
+	private boolean checked = false;
+	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public String getDueDate() {
+		return dueDate;
+	}
+	public void setDueDate(String dueDate) {
+		this.dueDate = dueDate;
+	}
+	public String getMemberAssigned() {
+		return memberAssigned;
+	}
+	public void setMemberAssigned(String memberAssigned) {
+		this.memberAssigned = memberAssigned;
+	}
+	public String getApproved() {
+		return approved;
+	}
+	public void setApproved(String approved) {
+		this.approved = approved;
+	}
+	
+	
+	
+	public boolean isChecked() {
+		return checked;
+	}
+
+
+
+	public void setChecked() {
+		if(this.isChecked() == true) {
+			this.checked = false;
+			
+		}else if(this.isChecked() == false){
+			this.checked = true;
+		};
+	}
+
+
+
+	public String toString() {
+		
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append(this.name + " " + this.description + " " + this.dueDate + " " + this.memberAssigned + " " + this.approved);
+		
+		return sb.toString();
+	}
+	
+	
+	
+}
+

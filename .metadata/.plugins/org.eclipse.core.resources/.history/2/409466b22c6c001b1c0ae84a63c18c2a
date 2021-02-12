@@ -1,0 +1,181 @@
+package beans;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+
+@SuppressWarnings("deprecation")
+@ManagedBean
+@ApplicationScoped
+public class Project {
+
+	public Project(String name, String description, String dueDate, int tasksActive, int tasksCompleted, int percentComplete) {
+		this.name = name;
+		this.description = description;
+		this.dueDate = dueDate;
+		this.tasksActive = tasksActive;
+		this.tasksCompleted = tasksCompleted;
+		this.percentCompete = percentComplete;
+		
+		
+	}
+	
+	public Project() {
+		
+	}
+
+	public List<Task> taskHashMapList = new ArrayList<Task>();
+
+	private String name;
+	private String description;
+	private String dueDate;
+	private int tasksActive;
+	private int tasksCompleted;
+	private int percentCompete;
+	private int choice = 0;
+	
+	
+	int keyValue = 0;
+	
+	public static HashMap<String, Task> tasks = new HashMap<String, Task>();
+	
+	public int keyValue() {
+		return this.keyValue;
+	}
+	
+	public void setKeyValue(int key) {
+		this.keyValue = key;
+	}
+	
+	
+
+	public int getChoice() {
+		return choice;
+	}
+
+	public void setChoice(int choice) {
+		this.choice = choice;
+	}
+
+	public boolean validateIsNew(Task task) {
+		
+		String checkTaskName = task.getName();
+		
+		boolean isNew = true;
+		
+		for(String s: tasks.keySet()) {
+			String taskName = tasks.get(s).getName();
+			if(taskName.equals(checkTaskName)) {
+			
+				isNew = false;
+				return isNew;
+				
+			}
+		}
+		
+		return isNew;
+	}
+	
+	public void addTask(Task task) {
+		
+		this.keyValue = this.keyValue + 1;
+		
+		String keyString = String.valueOf(this.keyValue);
+	
+		tasks.put(keyString, task);
+	}
+	
+	public void removeTask(String taskToRemoved) {
+		
+		boolean taskFound = false;
+		
+		for (String s: tasks.keySet()) {
+			String taskName = tasks.get(s).getName();
+			if(taskName.equals(taskToRemoved)) {
+				taskFound = true;
+				tasks.remove(s);
+				System.out.println("Task was removed!");
+				break;
+			}
+		}
+		
+		if(taskFound) {
+			System.out.println("Task was removed!");
+		}else {
+			
+			System.out.println("Task not found! No task was removed!");
+		}
+		
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		for(String s: tasks.keySet()) {
+			sb.append("Task Name: " + tasks.get(s).getName() + " Task Description: " + tasks.get(s).getDescription() 
+					+ " Due Date: " + tasks.get(s).getDueDate() + " Assigned to: " + tasks.get(s).getMemberAssigned() + " Approved?: " +  
+					tasks.get(s).getApproved().toString() + "\n");
+		}
+		
+		return sb.toString();
+	}
+	
+	public static HashMap<String, Task> getTasks() {
+		return tasks;
+	}
+	
+
+	public static void setTasks(HashMap<String, Task> tasks) {
+		Project.tasks = tasks;
+	}
+	
+	public List<Task> hashMapToList() {
+		
+		switch(choice) {
+		
+		//ALLTASKS
+		case 0: 		taskHashMapList.clear();
+						for(String s: Project.tasks.keySet()) {
+						taskHashMapList.add(tasks.get(s));
+						}
+	
+						return taskHashMapList;
+		//PASTDUE				
+		case 1:			taskHashMapList.clear();
+						for(String s: Project.tasks.keySet()) {
+							taskHashMapList.add(tasks.get(s));
+						}
+	
+						return taskHashMapList;
+		//COMINGDUE				
+		case 2:			taskHashMapList.clear();
+						for(String s: Project.tasks.keySet()) {
+						taskHashMapList.add(tasks.get(s));
+						}
+
+						return taskHashMapList;
+		//UNASSIGNED				
+		case 3:			taskHashMapList.clear();
+						for(String s: Project.tasks.keySet()) {
+							if(tasks.get(s).getMemberAssigned().equals(null) || tasks.get(s).getMemberAssigned().equals("") || )  tasks.get(s).getMemberAssigned().equals(" ")){
+								taskHashMapList.add(tasks.get(s));
+							}
+						}
+							
+						return taskHashMapList;
+						
+		
+		
+		
+		}
+		
+		return taskHashMapList;
+		
+	}
+		
+}
+
+

@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN"
+    "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html">
+	  
+		  <head>
+		  <title><ui:insert name="pageTitle">Page Title</ui:insert></title>
+
+		  </head>
+	  
+<body>
+	
+	<ui:composition template="/layouts/commonLayout.xhtml">
+	
+		
+		<ui:define name="content">
+		
+			<div >
+	
+				<h1>Project Home Page</h1>
+				<p> Welcome #{user.firstName} #{user.lastName}.</p>
+				<h:messages />
+			
+			</div>
+			
+			<div class="responseContainer">
+			
+				<h:dataTable value="#{project.hashMapToList()}" var="o" styleClass="order-table" headerClass="order-table-header" rowClasses="order-table-odd, order-table-even">
+				
+					<h:column>
+						<f:facet name="header">|  Name  </f:facet>
+						#{o.name}
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">|  Description  </f:facet>
+						#{o.description}
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">|  Due Date  </f:facet>
+						#{o.dueDate}
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">|  Assigned to  </f:facet>
+						#{o.memberAssigned}
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">|  Approved?  |</f:facet>
+						#{o.approved}
+					</h:column>
+	
+				</h:dataTable>
+				
+			</div>
+			
+			<div>
+			
+				<h:form>
+				
+					<div>
+						<div align="left">Task Name:</div>
+						<h:inputText value="#{task.name}">Task Name</h:inputText>
+						<div>Task description:</div>
+						<h:inputText value="#{task.description}" >Task Description</h:inputText>
+						<div align="left">Due Date:  Due date must be typed in yyyy-mm-dd format!!!</div>
+						<h:inputText value="#{task.dueDate}">  
+							<f:convertDateTime pattern="yyyy-MM-dd"/>  
+						</h:inputText>
+						<div>Assign Task to:</div>
+						<h:inputText value="#{task.memberAssigned}" >Task Assigned to</h:inputText>
+						<div>Task approved for production?</div>
+						<h:selectOneMenu value="#{task.approved}" >
+							<f:selectItem itemValue="true" itemLabel="Yes" />
+							<f:selectItem itemValue="false" itemLabel="No" />
+						</h:selectOneMenu>
+						<div>Type the name of the task exactly as it appears that you wish to delete</div>
+						<h:inputText value="#{task.toBeDeleted}">Type Task to delete here</h:inputText>
+						<div>Select filter from Drop-down menu.</div>
+						<h:selectOneMenu value="#{project.choice}" >
+							<f:selectItem itemValue="All Tasks" itemLabel="All Tasks" />
+							<f:selectItem itemValue="Past Due" itemLabel="Past Due" />
+							<f:selectItem itemValue="Coming Due" itemLabel="Coming Due" />
+							<f:selectItem itemValue="Unassigned" itemLabel="Unassigned" />
+						</h:selectOneMenu>
+						<h:commandButton action="#{projectController.createTask()}" value="Create New Task" ></h:commandButton>
+						<h:commandButton action="#{projectController.deleteTask()}" value="Delete Row" ></h:commandButton>
+						<h:commandButton action="#{projectController.updateTable()}" value="Update Table" ></h:commandButton>
+						
+						
+				
+					</div>
+					
+				</h:form>
+			
+			</div>
+		
+		</ui:define>
+	
+	</ui:composition>
+
+</body>
+
+</html>
