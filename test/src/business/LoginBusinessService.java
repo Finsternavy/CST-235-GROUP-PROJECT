@@ -1,5 +1,11 @@
 package business;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Alternative;
@@ -61,6 +67,7 @@ public class LoginBusinessService implements LoginBusinessInterface{
 		
 		System.out.println(message);
 		
+		
 		//For use with mySQL
 		/*try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/members", "root", "QAZXSWedcvfr1!");
 				
@@ -77,6 +84,32 @@ public class LoginBusinessService implements LoginBusinessInterface{
 			e.printStackTrace();
 		}*/
 						
+		
+		return status;
+	}
+	
+	public boolean validate(User user) throws ClassNotFoundException{
+		
+		boolean status = false;
+		
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		
+		//For use with mySQL
+		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/members", "root", "QAZXSWedcvfr1!");
+				
+				PreparedStatement preparedStatement = connection.prepareStatement("select * from member where username = ? and password = ?")){
+				preparedStatement.setString(1, user.getUserName());
+				preparedStatement.setString(2, user.getPassword());
+				
+				System.out.println(preparedStatement);
+				ResultSet rs = preparedStatement.executeQuery();
+				status = rs.next();
+				
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
 		
 		return status;
 	}
