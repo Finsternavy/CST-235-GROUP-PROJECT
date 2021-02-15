@@ -25,7 +25,7 @@
 			
 			</div>
 			
-			<div class="responseContainer">
+			<div class="container">
 			
 				<h:dataTable value="#{project.hashMapToList()}" var="o" styleClass="order-table" headerClass="order-table-header" rowClasses="order-table-odd, order-table-even">
 				
@@ -58,42 +58,48 @@
 				
 			</div>
 			
-			<div>
+			<div class="container">
 			
 				<h:form>
 				
 					<div>
-						<div align="center">Task Name:</div>
-						<h:inputText value="#{task.name}" style="Width: 400px">Task Name</h:inputText>
-						<div align="center">Task description:</div>
-						<h:inputText value="#{task.description}" style="Width: 400px">Task Description</h:inputText>
-						<div align="center">Due Date:  Due date must be typed in YYYY-MM-DD format!!!</div>
-						<h:inputText value="#{customDate.dateString}" style="Width: 400px"></h:inputText>
-						<div align="center">Assign Task to:</div>
-						<h:inputText value="#{task.memberAssigned}" style="Width: 400px" >Task Assigned to</h:inputText>
-						<div align="center">Task approved for production?</div>
-						<h:selectOneMenu value="#{task.approved}" style="Width: 400px" >
-							<f:selectItem itemValue="true" itemLabel="Yes" />
-							<f:selectItem itemValue="false" itemLabel="No" />
-						</h:selectOneMenu>
-						<div align="center">Type the name of the task exactly as it appears that you wish to delete</div>
-						<h:inputText value="#{task.toBeDeleted}" style="Width: 400px">Type Task to delete here</h:inputText>
-						<div align="center">Select filter from Drop-down menu.</div>
-						<h:selectOneMenu value="#{project.choice}" style="Width: 400px">
-							<f:selectItem itemValue="All Tasks" itemLabel="All Tasks" />
-							<f:selectItem itemValue="Past Due" itemLabel="Past Due" />
-							<f:selectItem itemValue="Coming Due" itemLabel="Coming Due" />
-							<f:selectItem itemValue="Unassigned" itemLabel="Unassigned" />
-							<f:selectItem itemValue="Assigned" itemLabel="Assigned" />
-							<f:selectItem itemValue="Approved" itemLabel="Approved" />
-							<f:selectItem itemValue="Not Approved" itemLabel="Not Approved" />
-							<f:selectItem itemValue="search" itemLabel="search" />
+						<div class="col-25">Task Name:</div>
+							<div class="col-75"><h:inputText value="#{task.name}" >Task Name</h:inputText></div>
 							
-						</h:selectOneMenu>
-						<div>
-						<h:inputText value="#{project.search}" style="Width: 400px">Type Task to delete here</h:inputText>
-						</div>
-						<h:commandButton align="left" action="#{projectController.createTask()}" value="Create New Task" ></h:commandButton>
+						<div class="col-25">Task description:</div>
+							<div class="col-75"><h:inputText value="#{task.description}" >Task Description</h:inputText></div>
+							
+						<div class="col-25">Due Date (YYYY-MM-DD):</div>
+							<div class="col-75"><h:inputText value="#{customDate.dateString}" ></h:inputText></div>
+							
+						<div class="col-25">Assign Task to:</div>
+							<div class="col-75"><h:inputText value="#{task.memberAssigned}" >Task Assigned to</h:inputText></div>
+							
+						<div class="col-25">Task approved for production?</div>
+							<div class="col-75"><h:selectOneMenu value="#{task.approved}">
+								<f:selectItem itemValue="true" itemLabel="Yes" />
+								<f:selectItem itemValue="false" itemLabel="No" />
+						</h:selectOneMenu></div>
+						
+						<div class="col-25">Type the name of the task exactly as it appears that you wish to delete</div>
+							<div class="col-75"><h:inputText value="#{task.toBeDeleted}" >Type Task to delete here</h:inputText></div>
+							
+						<div class="col-25">Select filter from Drop-down menu.</div>
+							<div class="col-75"><h:selectOneMenu value="#{project.choice}" >
+								<f:selectItem itemValue="All Tasks" itemLabel="All Tasks" />
+								<f:selectItem itemValue="Past Due" itemLabel="Past Due" />
+								<f:selectItem itemValue="Coming Due" itemLabel="Coming Due" />
+								<f:selectItem itemValue="Unassigned" itemLabel="Unassigned" />
+								<f:selectItem itemValue="Assigned" itemLabel="Assigned" />
+								<f:selectItem itemValue="Approved" itemLabel="Approved" />
+								<f:selectItem itemValue="Not Approved" itemLabel="Not Approved" />
+								<f:selectItem itemValue="search" itemLabel="search" />
+							</h:selectOneMenu></div>
+							
+						<div class="col-25">Type Task to delete here</div>
+							<div class="col-75"><h:inputText value="#{project.search}"></h:inputText></div>
+						
+						<h:commandButton action="#{projectController.createTask()}" value="Create New Task" ></h:commandButton>
 						<h:commandButton action="#{projectController.deleteTask()}" value="Delete Row" ></h:commandButton>
 						<h:commandButton action="#{projectController.updateTable()}" value="Update Table" ></h:commandButton>
 						<h:commandButton action="#{projectController.search()}" value="Search" ></h:commandButton>

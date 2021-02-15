@@ -18,19 +18,19 @@
 			<div class="container">
 				<h:form>
 					<div class="col-25">First Name:</div>
-						<div class="col-75"><h:inputText value="#{user.firstName}" /></div>
+						<div class="col-75"><h:inputText value="#{user.firstName}" required="true" requiredMessage="Please type in a first name"/></div>
 						
 					<div class="col-25">Last Name:</div>
-						<div class="col-75"> <h:inputText value="#{user.lastName}" /></div>
+						<div class="col-75"> <h:inputText value="#{user.lastName}" required="true" requiredMessage="Please type in a last name"/></div>
 						
 					<div class="col-25">User Name:</div>
-						<div class="col-75"><h:inputText value="#{user.userName}" /></div>
+						<div class="col-75"><h:inputText value="#{user.userName}" required="true" requiredMessage="Please type in a user name"/></div>
 						
 					<div class="col-25">Password:</div>
-						<div class="col-75"><h:inputSecret value="#{user.password}" /></div>
+						<div class="col-75"><h:inputSecret value="#{user.password}" required="true" requiredMessage="Please type in a password"/></div>
 					
 					<div class="col-25">Email:</div>
-						<div class="col-75"><h:inputText value="#{user.email}" /></div>
+						<div class="col-75"><h:inputText value="#{user.email}" required="true" requiredMessage="Please type in your email"/></div>
 						
 					<div class="col-25">Phone:</div>
 						<div class="col-75"> <h:inputText value="#{user.phone}" required="true" maxlength="10" requiredMessage="Incorrect phone number"/></div>
