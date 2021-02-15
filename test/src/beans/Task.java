@@ -1,10 +1,8 @@
 package beans;
 
 
-import java.util.Calendar;
-import java.util.Date;
 
-import javax.faces.bean.ApplicationScoped;
+
 import javax.faces.bean.ManagedBean;
 
 @SuppressWarnings("deprecation")
@@ -69,20 +67,13 @@ public class Task {
 		this.approved = approved;
 	}
 	
-	
-	
-
 	public String getToBeDeleted() {
 		return toBeDeleted;
 	}
 
-
-
 	public void setToBeDeleted(String toBeDeleted) {
 		this.toBeDeleted = toBeDeleted;
 	}
-
-
 
 	public String toString() {
 		

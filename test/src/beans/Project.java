@@ -1,15 +1,11 @@
 package beans;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+
 import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.TimeUnit;
+
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
