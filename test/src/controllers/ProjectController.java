@@ -69,4 +69,20 @@ public class ProjectController {
 		return "response.xhtml";
 	}
 	
+	public String search() {
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		Project project = context.getApplication().evaluateExpressionGet(context, "#{project}", Project.class);
+		
+		System.out.println("current value of search is: " + project.getSearch());
+		myProject.setSearch(project.getSearch());
+		
+		myProject.setChoice("search");
+		System.out.println("Search choice is: " + myProject.getChoice());
+		
+		FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("project", project);
+		
+		return "response.xhtml";
+	}
+	
 }

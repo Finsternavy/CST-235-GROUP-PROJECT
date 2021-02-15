@@ -87,12 +87,16 @@
 							<f:selectItem itemValue="Assigned" itemLabel="Assigned" />
 							<f:selectItem itemValue="Approved" itemLabel="Approved" />
 							<f:selectItem itemValue="Not Approved" itemLabel="Not Approved" />
+							<f:selectItem itemValue="search" itemLabel="search" />
+							
 						</h:selectOneMenu>
 						<div>
+						<h:inputText value="#{project.search}" style="Width: 400px">Type Task to delete here</h:inputText>
 						</div>
 						<h:commandButton align="left" action="#{projectController.createTask()}" value="Create New Task" ></h:commandButton>
 						<h:commandButton action="#{projectController.deleteTask()}" value="Delete Row" ></h:commandButton>
 						<h:commandButton action="#{projectController.updateTable()}" value="Update Table" ></h:commandButton>
+						<h:commandButton action="#{projectController.search()}" value="Search" ></h:commandButton>
 						
 						
 				

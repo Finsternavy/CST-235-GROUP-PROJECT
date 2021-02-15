@@ -44,6 +44,7 @@ public class Project {
 	private int percentCompete;
 	private String choice = "";
 	private int choiceInt = 0;
+	private String search = "";
 	
 	
 	int keyValue = 0;
@@ -76,6 +77,16 @@ public class Project {
 
 	public void setChoiceInt(int choiceInt) {
 		this.choiceInt = choiceInt;
+	}
+	
+	
+
+	public String getSearch() {
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
 	}
 
 	public boolean validateIsNew(Task task) {
@@ -168,8 +179,10 @@ public class Project {
 			this.choiceInt = 4;
 		}else if(this.choice.equals("Approved")){
 			this.choiceInt = 5;
-		}else if(choice.equals("Not Approved")){
+		}else if(this.choice.equals("Not Approved")){
 			this.choiceInt = 6;
+		}else if(this.choice.equals("search")){
+			this.choiceInt = 7;	
 		}else {
 			this.choiceInt = 0;
 		}
@@ -178,7 +191,7 @@ public class Project {
 	
 	public List<Task> hashMapToList() {
 		
-		this.setChoiceIntManual(choice);
+		this.setChoiceIntManual(this.getChoice());
 		
 		
 		switch(this.getChoiceInt()) {
@@ -249,9 +262,20 @@ public class Project {
 
 						return taskHashMapList;
 						
+		case 7:			taskHashMapList.clear();
+						for(String s: Project.tasks.keySet()) {
+							if(tasks.get(s).getName().equals(this.getSearch())) {
+								taskHashMapList.add(tasks.get(s));
+								System.out.println("Case 7");
+							}
+						}
+						
+						return taskHashMapList;
+						
 		default:		taskHashMapList.clear();
 						for(String s: Project.tasks.keySet()) {
 						taskHashMapList.add(tasks.get(s));
+					
 						}
 
 						return taskHashMapList;
@@ -261,9 +285,7 @@ public class Project {
 		
 		}
 		
-	}
-	
-	 
+	} 
 		
 }
 
