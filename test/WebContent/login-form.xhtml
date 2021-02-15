@@ -20,10 +20,10 @@
 				<h:form >
 					
 					<div class="col-25">User Name:</div>
-						<div class="col-75"><h:inputText value="#{user.userName}" /></div>
+						<div class="col-75"><h:inputText value="#{user.userName}" required="true" requiredMessage="Please enter a username."/></div>
 					
 					<div class="col-25">Password:</div>
-						<div class="col-75"> <h:inputSecret value="#{user.password}" /></div>
+						<div class="col-75"> <h:inputSecret value="#{user.password}" required="true" requiredMessage="Please enter a password"/></div>
 					
 					<div><h:commandButton action="#{loginFormController.onSubmit()}" value="Submit" type="submit"/></div>
 					

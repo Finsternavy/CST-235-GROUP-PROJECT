@@ -33,7 +33,7 @@
 						<div class="col-75"><h:inputText value="#{user.email}" /></div>
 						
 					<div class="col-25">Phone:</div>
-						<div class="col-75"> <h:inputText value="#{user.phone}" /></div>
+						<div class="col-75"> <h:inputText value="#{user.phone}" required="true" maxlength="10" requiredMessage="Incorrect phone number"/></div>
 					
 					<div>
 						<h:commandButton action="#{registrationFormController.onSubmit()}" value="Submit" />

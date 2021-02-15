@@ -75,7 +75,7 @@ input[type=submit]:hover {
 }
 
 
-
+/* need to still confirm implementation of these*/
 .order-table{   
     border-collapse:collapse;
     width: 600px;

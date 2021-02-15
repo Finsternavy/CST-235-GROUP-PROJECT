@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="CST-235-GROUP-PROJECT">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/.metadata/.plugins/org.jboss.tools.common.projecttemplates/templates/jsf-1.1/JSFKickStartWithLibs/JavaSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/.metadata/.plugins/org.jboss.tools.common.projecttemplates/templates/jsf-1.1/JSFKickStartWithoutLibs/JavaSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/.metadata/.plugins/org.jboss.tools.common.projecttemplates/templates/jsf-1.2/JSFKickStartWithoutLibs/JavaSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/.metadata/.plugins/org.jboss.tools.common.projecttemplates/templates/jsf-1.2-facelets/FaceletsKickStartWithRILibs/JavaSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/.metadata/.plugins/org.jboss.tools.common.projecttemplates/templates/jsf-1.2-facelets/FaceletsKickStartWithoutLibs/JavaSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/.metadata/.plugins/org.jboss.tools.common.projecttemplates/templates/jsf-2.0/JSFKickStartWithoutLibs/JavaSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/.metadata/.plugins/org.jboss.tools.common.projecttemplates/templates/jsf-2.1/JSFKickStartWithoutLibs/JavaSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/.metadata/.plugins/org.jboss.tools.common.projecttemplates/templates/jsf-2.2/JSFKickStartWithoutLibs/JavaSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/.metadata/.plugins/org.jboss.tools.common.projecttemplates/templates/jsf-2.3/JSFKickStartWithoutLibs/JavaSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/test/src"/>
+        <property name="context-root" value="CST-235-GROUP-PROJECT"/>
+        <property name="java-output-path" value="/CST-235-GROUP-PROJECT/bin"/>
+    </wb-module>
+</project-modules>
