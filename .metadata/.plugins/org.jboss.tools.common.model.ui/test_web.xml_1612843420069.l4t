@@ -2,9 +2,22 @@
 <Layout resource="/test/WebContent/WEB-INF/web.xml">
  <TreeFormPage>
   <Memento type="FileWebApp30">
-   <Memento type="Deployment Descriptor"/>
-   <Memento type="Context Params"/>
-   <Memento type="Advanced"/>
+   <Memento collapsed="false" type="Deployment Descriptor"/>
+   <Memento collapsed="false" type="Context Params"/>
+   <Memento collapsed="false" type="Advanced"/>
+  </Memento>
+  <Memento type="WebAppFolderServlets30">
+   <Memento collapsed="false" type="Servlets"/>
+   <Memento collapsed="false" type="Servlet Mappings"/>
+  </Memento>
+  <Memento type="WebAppServlet30">
+   <Memento collapsed="false" type="Servlet"/>
+   <Memento collapsed="false" type="Init Params"/>
+   <Memento collapsed="false" type="Security Roles"/>
+   <Memento collapsed="false" type="Advanced"/>
+  </Memento>
+  <Memento type="">
+   <Memento type="Properties Editor"/>
   </Memento>
  </TreeFormPage>
 </Layout>

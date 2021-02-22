@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<typeInfoHistroy/>
+<typeInfoHistroy>
+    <typeInfo handle="=test/C:\/Users\/Finst\/jboss-eap-7.3\/modules\/system\/layers\/base\/org\/jboss\/resteasy\/resteasy-jaxrs\/main\/resteasy-jaxrs-3.9.3.SP1-redhat-00001.jar=/owner.project.facets=/jst.jsf;jst.jaxrs;jst.web=/&lt;org.jboss.resteasy.plugins.server.servlet(HttpServletDispatcher.class[HttpServletDispatcher" modifiers="33" timestamp="1611114815984"/>
+</typeInfoHistroy>

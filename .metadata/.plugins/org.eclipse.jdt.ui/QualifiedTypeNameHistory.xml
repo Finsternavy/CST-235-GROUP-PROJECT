@@ -4,10 +4,8 @@
     <fullyQualifiedTypeName name="java.util.HashMap"/>
     <fullyQualifiedTypeName name="dao.LoginDao"/>
     <fullyQualifiedTypeName name="javax.annotation.ManagedBean"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="beans.Project"/>
     <fullyQualifiedTypeName name="dao.ProjectDao"/>
-    <fullyQualifiedTypeName name="beans.Task"/>
     <fullyQualifiedTypeName name="business.LoginBusinessService"/>
     <fullyQualifiedTypeName name="beans.User"/>
     <fullyQualifiedTypeName name="javax.ejb.Local"/>
@@ -33,4 +31,9 @@
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
     <fullyQualifiedTypeName name="java.sql.SQLException"/>
+    <fullyQualifiedTypeName name="javax.ws.rs.core.MediaType"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="beans.Task"/>
+    <fullyQualifiedTypeName name="javax.ws.rs.GET"/>
+    <fullyQualifiedTypeName name="javax.inject.Inject"/>
 </qualifiedTypeNameHistroy>
